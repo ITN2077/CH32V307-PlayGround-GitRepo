@@ -1,8 +1,7 @@
 ################################################################################
-# MRS Version: 1.9.2
-# 自动生成的文件。不要编辑！
+# MRS Version: 2.1.0
+# Automatically-generated file. Do not edit!
 ################################################################################
-
 -include ../makefile.init
 
 RM := rm -rf
@@ -22,17 +21,17 @@ RM := rm -rf
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
-ifneq ($(strip $(ASM_UPPER_DEPS)),)
--include $(ASM_UPPER_DEPS)
-endif
-ifneq ($(strip $(ASM_DEPS)),)
--include $(ASM_DEPS)
-endif
 ifneq ($(strip $(S_DEPS)),)
 -include $(S_DEPS)
 endif
 ifneq ($(strip $(S_UPPER_DEPS)),)
 -include $(S_UPPER_DEPS)
+endif
+ifneq ($(strip $(ASM_DEPS)),)
+-include $(ASM_DEPS)
+endif
+ifneq ($(strip $(ASM_UPPER_DEPS)),)
+-include $(ASM_UPPER_DEPS)
 endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
@@ -52,26 +51,26 @@ SECONDARY_SIZE += \
 ZDT_Stepper_Moter_Drive.siz \
 
 
-# 所有目标
-all: ZDT_Stepper_Moter_Drive.elf secondary-outputs
+# All Target
+all: 
+	$(MAKE) --no-print-directory main-build 
 
-# 工具调用
+main-build: ZDT_Stepper_Moter_Drive.elf secondary-outputs
+
+# Tool invocations
 ZDT_Stepper_Moter_Drive.elf: $(OBJS) $(USER_OBJS)
-	@	@	riscv-none-embed-gcc -march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -pedantic -Wunused -Wuninitialized -Wall  -g -T "X:\300-软件技术\205-我写的MCU程序\CH32\6.张大头步进电机驱动\libraries\sdk\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -L"../" -L"X:\300-软件技术\205-我写的MCU程序\CH32\6.张大头步进电机驱动\libraries\zf_device" -Wl,-Map,"ZDT_Stepper_Moter_Drive.map" --specs=nano.specs -u _printf_float --specs=nosys.specs -Wl,--print-memory-usage -o "ZDT_Stepper_Moter_Drive.elf" $(OBJS) $(USER_OBJS) $(LIBS)
-	@	@
+	@	riscv-none-embed-gcc -march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore -fmax-errors=20 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -pedantic -Wunused -Wuninitialized -Wall -g -T "z:/8-CodeProjects/1.MCU/CH32V307-PlayGround-GitRepo/6.张大头步进电机驱动/libraries/sdk/Ld/Link.ld" -nostartfiles -Xlinker --gc-sections -L"z:\8-CodeProjects\1.MCU\CH32V307-PlayGround-GitRepo\6.张大头步进电机驱动\project\mrs" -L"z:/8-CodeProjects/1.MCU/CH32V307-PlayGround-GitRepo/6.张大头步进电机驱动/libraries/zf_device" -Wl,-Map,"ZDT_Stepper_Moter_Drive.map" --specs=nano.specs -u _printf_float --specs=nosys.specs -Wl,--print-memory-usage -o "ZDT_Stepper_Moter_Drive.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 ZDT_Stepper_Moter_Drive.hex: ZDT_Stepper_Moter_Drive.elf
-	@	riscv-none-embed-objcopy -O ihex "ZDT_Stepper_Moter_Drive.elf"  "ZDT_Stepper_Moter_Drive.hex"
-	@	@
+	@	riscv-none-embed-objcopy -O ihex "ZDT_Stepper_Moter_Drive.elf" "ZDT_Stepper_Moter_Drive.hex"
 ZDT_Stepper_Moter_Drive.lst: ZDT_Stepper_Moter_Drive.elf
 	@	riscv-none-embed-objdump --source --all-headers --demangle --line-numbers --wide "ZDT_Stepper_Moter_Drive.elf" > "ZDT_Stepper_Moter_Drive.lst"
-	@	@
 ZDT_Stepper_Moter_Drive.siz: ZDT_Stepper_Moter_Drive.elf
-	@	riscv-none-embed-size --format=berkeley "ZDT_Stepper_Moter_Drive.elf"
-	@	@
-# 其他目标
+	riscv-none-embed-size --format=berkeley "ZDT_Stepper_Moter_Drive.elf"
+
+# Other Targets
 clean:
-	-$(RM) $(ASM_UPPER_DEPS)$(OBJS)$(SECONDARY_FLASH)$(SECONDARY_LIST)$(SECONDARY_SIZE)$(ASM_DEPS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS) ZDT_Stepper_Moter_Drive.elf
-	-@
+	-$(RM) $(OBJS)$(SECONDARY_FLASH)$(SECONDARY_LIST)$(SECONDARY_SIZE)$(S_DEPS)$(S_UPPER_DEPS)$(ASM_DEPS)$(ASM_UPPER_DEPS)$(C_DEPS) ZDT_Stepper_Moter_Drive.elf
+
 secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_LIST) $(SECONDARY_SIZE)
 
 .PHONY: all clean dependents

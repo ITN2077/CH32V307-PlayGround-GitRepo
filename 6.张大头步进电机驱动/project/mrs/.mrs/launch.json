@@ -4,8 +4,8 @@
 		{
 			"type": "mrs-debugger",
 			"request": "launch",
-			"name": "ZDT-Torque-Model",
-			"cwd": "z:\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround-GitRepo\\8. 张大头力矩反馈_2025-04-10\\project\\mrs",
+			"name": "ZDT_Stepper_Moter_Drive",
+			"cwd": "z:\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround-GitRepo\\6.张大头步进电机驱动\\project\\mrs",
 			"openOCDCfg": {
 				"useLocalOpenOCD": true,
 				"executable": "c:/MounRiver/MounRiver_Studio2/resources/app/resources/win32/components/WCH/OpenOCD/OpenOCD/bin/openocd.exe",
@@ -38,8 +38,8 @@
 					"additionalCommands": []
 				},
 				"loadedFiles": {
-					"executableFile": "z:\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround-GitRepo\\8. 张大头力矩反馈_2025-04-10\\project\\mrs\\obj\\ZDT-Torque-Model.elf",
-					"symbolFile": "z:\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround-GitRepo\\8. 张大头力矩反馈_2025-04-10\\project\\mrs\\obj\\ZDT-Torque-Model.elf",
+					"executableFile": "z:\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround-GitRepo\\6.张大头步进电机驱动\\project\\mrs\\obj\\ZDT_Stepper_Moter_Drive.elf",
+					"symbolFile": "z:\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround-GitRepo\\6.张大头步进电机驱动\\project\\mrs\\obj\\ZDT_Stepper_Moter_Drive.elf",
 					"executableFileOffset": 0,
 					"symbolFileOffset": 0
 				},

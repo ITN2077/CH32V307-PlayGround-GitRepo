@@ -1,21 +1,21 @@
 ################################################################################
-# MRS Version: 1.9.2
-# 自动生成的文件。不要编辑！
+# MRS Version: 2.1.0
+# Automatically-generated file. Do not edit!
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
 S_UPPER_SRCS += \
-X:/300-软件技术/205-我写的MCU程序/CH32/6.张大头步进电机驱动/libraries/sdk/Startup/startup_ch32v30x_D8C.S 
-
-OBJS += \
-./sdk/Startup/startup_ch32v30x_D8C.o 
+z:/8-CodeProjects/1.MCU/CH32V307-PlayGround-GitRepo/6.张大头步进电机驱动/libraries/sdk/Startup/startup_ch32v30x_D8C.S 
 
 S_UPPER_DEPS += \
 ./sdk/Startup/startup_ch32v30x_D8C.d 
 
+OBJS += \
+./sdk/Startup/startup_ch32v30x_D8C.o 
+
+
 
 # Each subdirectory must supply rules for building sources it contributes
-sdk/Startup/startup_ch32v30x_D8C.o: X:/300-软件技术/205-我写的MCU程序/CH32/6.张大头步进电机驱动/libraries/sdk/Startup/startup_ch32v30x_D8C.S
-	@	@	riscv-none-embed-gcc -march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -pedantic -Wunused -Wuninitialized -Wall  -g -x assembler -I"X:\300-软件技术\205-我写的MCU程序\CH32\6.张大头步进电机驱动\libraries\sdk\Startup" -I"X:\300-软件技术\205-我写的MCU程序\CH32\6.张大头步进电机驱动\libraries\zf_driver" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -c -o "$@" "$<"
-	@	@
+sdk/Startup/startup_ch32v30x_D8C.o: z:/8-CodeProjects/1.MCU/CH32V307-PlayGround-GitRepo/6.张大头步进电机驱动/libraries/sdk/Startup/startup_ch32v30x_D8C.S
+	@	riscv-none-embed-gcc -march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore -fmax-errors=20 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -pedantic -Wunused -Wuninitialized -Wall -g -x assembler -I"z:/8-CodeProjects/1.MCU/CH32V307-PlayGround-GitRepo/6.张大头步进电机驱动/libraries/sdk/Startup" -I"z:/8-CodeProjects/1.MCU/CH32V307-PlayGround-GitRepo/6.张大头步进电机驱动/libraries/zf_driver" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -c -o "$@" "$<"
 

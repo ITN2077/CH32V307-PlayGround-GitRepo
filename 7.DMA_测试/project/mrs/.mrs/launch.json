@@ -5,7 +5,7 @@
 			"type": "mrs-debugger",
 			"request": "launch",
 			"name": "DMA_Testing",
-			"cwd": "c:\\X盘\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround\\7.DMA_测试\\project\\mrs",
+			"cwd": "z:\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround-GitRepo\\7.DMA_测试\\project\\mrs",
 			"openOCDCfg": {
 				"useLocalOpenOCD": true,
 				"executable": "c:/MounRiver/MounRiver_Studio2/resources/app/resources/win32/components/WCH/OpenOCD/OpenOCD/bin/openocd.exe",
@@ -38,8 +38,8 @@
 					"additionalCommands": []
 				},
 				"loadedFiles": {
-					"executableFile": "c:\\X盘\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround\\7.DMA_测试\\project\\mrs\\obj\\DMA_Testing.elf",
-					"symbolFile": "c:\\X盘\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround\\7.DMA_测试\\project\\mrs\\obj\\DMA_Testing.elf",
+					"executableFile": "z:\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround-GitRepo\\7.DMA_测试\\project\\mrs\\obj\\DMA_Testing.elf",
+					"symbolFile": "z:\\8-CodeProjects\\1.MCU\\CH32V307-PlayGround-GitRepo\\7.DMA_测试\\project\\mrs\\obj\\DMA_Testing.elf",
 					"executableFileOffset": 0,
 					"symbolFileOffset": 0
 				},
