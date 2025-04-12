@@ -107,6 +107,7 @@ void PeripheraAll_Init()
     printf_USART_DEBUG("addr:0x%08X\r\n", (uint32_t)ma);
 
     printf_USART_DEBUG("hello,WSY! Let`s start!\r\n");
+    printf_USART_DEBUG("This is NEW VERSION\r\n");
     // Task_Disable();  // 定时器中断失能。即所有实时任务停止
 }
 //!------------------✨✨✨✨✨✨ 非时间片轮询任务调度函数 END 🌸🌸🌸🌸🌸🌸---------⬆️⬆️⬆️⬆️⬆️⬆️
