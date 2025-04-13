@@ -2,49 +2,34 @@
 *.o
 *.d
 *.elf
+# === 只忽略编译产物，不忽略构建文件 ===
+
+# 中间文件
+*.o
+*.d
+*.elf
 *.hex
 *.bin
 *.map
 *.lst
 *.log
-*.out
-*.a
 *.tmp
-*.bak
 
-# === 自动生成的构建文件夹 ===
+# 中间目录
 **/obj/
 **/build/
 **/Debug/
 **/Release/
 
-# === VSCode 配置文件（也适用于 Cursor）===
+# IDE 缓存（但保留 .project, .cproject 等工程构建文件）
 .vscode/
-
-# === MRS (MounRiver Studio) 工程配置与缓存 ===
-*.mrs-workspace
-.mrs/
-.settings/
-.project
-.cproject
-*.launch
-*.wvproj
-
-# === Makefile 相关构建缓存 ===
-Makefile
-*.mk
-subdir.mk
-
-# === 临时/辅助脚本 & 模板文件 ===
-*.bat
-*.template
-*.swp
-*.swo
-
-# === IDE/系统生成的无用文件 ===
 *.user
-*.class
-.DS_Store
-Thumbs.db
-desktop.ini
+*.swo
+*.swp
+*.swn
+
+# 可选：文档、图片等（视情况手动添加）
+*.doc
+*.pdf
+
 
