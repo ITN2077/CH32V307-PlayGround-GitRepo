@@ -1,0 +1,50 @@
+# === 通用中间文件 & 编译产物 ===
+*.o
+*.d
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.log
+*.out
+*.a
+*.tmp
+*.bak
+
+# === 自动生成的构建文件夹 ===
+**/obj/
+**/build/
+**/Debug/
+**/Release/
+
+# === VSCode 配置文件（也适用于 Cursor）===
+.vscode/
+
+# === MRS (MounRiver Studio) 工程配置与缓存 ===
+*.mrs-workspace
+.mrs/
+.settings/
+.project
+.cproject
+*.launch
+*.wvproj
+
+# === Makefile 相关构建缓存 ===
+Makefile
+*.mk
+subdir.mk
+
+# === 临时/辅助脚本 & 模板文件 ===
+*.bat
+*.template
+*.swp
+*.swo
+
+# === IDE/系统生成的无用文件 ===
+*.user
+*.class
+.DS_Store
+Thumbs.db
+desktop.ini
+
