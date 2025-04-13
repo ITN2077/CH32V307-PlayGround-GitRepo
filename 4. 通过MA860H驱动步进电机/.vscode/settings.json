@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "zf_common_headfile.h": "c",
-        "uart_data_unpacker.h": "c",
-        "ring_buffer.h": "c"
-    }
-}
