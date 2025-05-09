@@ -16,6 +16,9 @@
 #define CMD_END_BYTE 0xFF   /**< 返回数据结束字节 */
 #define CMD_RSP_LEN 10      /**< 返回数据长度 */
 
+/* 串口发送回调函数 */
+static uart_send_callback_t uart_send_cb = (void *)0;
+
 /**
  * @brief 计算校验位
  * @param data 数据数组
@@ -31,9 +34,6 @@ static uint8_t calc_checksum(const uint8_t *data, uint8_t len)
     }
     return checksum;
 }
-
-/* 串口发送回调函数 */
-static uart_send_callback_t uart_send_cb = (void *)0;
 
 /**
  * @brief 发送命令
