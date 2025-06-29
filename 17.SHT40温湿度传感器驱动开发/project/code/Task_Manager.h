@@ -13,8 +13,6 @@ void While_Task(void);
 void UART_packet_TASKhandler(void);
 void key_Processing(void);
 void Hard_Real_Time_Processing(void);
-void Temp_Read_Task(void);
-void Temp_Convert_Task(void);
 // ******任务函数 END
 
 #endif /* TASK_MANAGER_H_ */

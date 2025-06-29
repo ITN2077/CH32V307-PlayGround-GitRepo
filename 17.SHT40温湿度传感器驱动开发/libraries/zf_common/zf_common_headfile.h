@@ -145,8 +145,7 @@
 #include "Ring_Buffer.h"
 #include "XxxTimeSliceOffset.h"
 #include "Task_Manager.h"
-#include "DS18B20.h"
-#include "OneWire.h"
+#include "SHT40.h"
 //===================================================用户自定义文件===================================================
 
 #endif

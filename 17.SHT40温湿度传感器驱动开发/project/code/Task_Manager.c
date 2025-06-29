@@ -1,7 +1,7 @@
 #include "Task_Manager.h"
 
 //!------------------🍅🍅🍅🍅🍅🍅 注册时间片轮询任务 START 🍒🍒🍒🍒🍒🍒---------⬇️⬇️⬇️⬇️⬇️⬇️
-STR_XxxTimeSliceOffset Uart_task, While_task, Temp_Convert_task, Temp_Read_task; // 创建任务句柄
+STR_XxxTimeSliceOffset Uart_task; // 创建任务句柄,While_task,Key_task,
 /**
  *  @brief 时间片轮询任务创建函数
  *  @note 记得创建任务句柄
@@ -9,17 +9,18 @@ STR_XxxTimeSliceOffset Uart_task, While_task, Temp_Convert_task, Temp_Read_task;
 void Time_Slice_Offset_Register(void)
 {
     // !任务调度系统节拍 单位 10 ms 以下是注册任务
-    XxxTimeSliceOffset_Register(&While_task, While_Task, 500, 0);              // 注册while循环任务。
-    XxxTimeSliceOffset_Register(&Uart_task, UART_packet_TASKhandler, 0, 0);    // 注册串口数据包接收任务, 轮询时间为0即while，偏移0.
-    XxxTimeSliceOffset_Register(&Temp_Convert_task, Temp_Convert_Task, 80, 0); // 注册温度转换任务，800ms执行一次
-    XxxTimeSliceOffset_Register(&Temp_Read_task, Temp_Read_Task, 80, 40);      // 注册温度读取任务，800ms执行一次，偏移40ms
+    // XxxTimeSliceOffset_Register(&While_task, While_Task, 0, 0);             // 注册while循环任务。
+    XxxTimeSliceOffset_Register(&Uart_task, UART_packet_TASKhandler, 0, 0); // 注册串口数据包接收任务, 轮询时间为0即while，偏移0.
     // XxxTimeSliceOffset_Register(&Key_task, key_Processing, 2, 1);           // 按键扫描函数,需要使用记得注册任务以及初始化 key_init(20);
     //  注册任务结束
 }
 //!------------------✨✨✨✨✨✨ 注册时间片轮询任务 END 🌸🌸🌸🌸🌸🌸---------⬆️⬆️⬆️⬆️⬆️⬆️
 
+
+
+
 //!----------------🍅🍅🍅🍅🍅🍅 串口数据包任务使用的 START 🍒🍒🍒🍒🍒🍒---------⬇️⬇️⬇️⬇️⬇️⬇️
-#define NumOfMsg 2 // 定义串口接收的数据要解析的数据的个数
+#define NumOfMsg 2 //定义串口接收的数据要解析的数据的个数
 int test_value_1 = 0;
 float test_value_2 = 0.000;
 
@@ -29,6 +30,9 @@ PacketTag_TpDef_struct Test_packet[] = {
     // 添加更多的映射关系
 };
 //!------------------✨✨✨✨✨✨ 串口数据包任务使用的 END 🌸🌸🌸🌸🌸🌸---------⬆️⬆️⬆️⬆️⬆️⬆️
+
+
+
 
 //!------------------🍅🍅🍅🍅🍅🍅 非时间片轮询任务调度函数 START  🍒🍒🍒🍒🍒🍒---------⬇️⬇️⬇️⬇️⬇️⬇️
 /**********************************************************************
@@ -48,14 +52,19 @@ void PeripheraAll_Init()
     // pit_ms_init(TIM7_PIT, 50);            // 定时器七初始化，用于硬实时任务调度
     // interrupt_set_priority(TIM7_IRQn, 0);
 
-    // timer_init(TIM_5, TIMER_US); // 初始化定时器5用于计时
+    //timer_init(TIM_5, TIMER_US); // 初始化定时器5用于计时
 
-    // key_init(20); // 按键初始化，20ms一次中断
-    printf_USART_DEBUG("hello,WSY!oookk\r\n");
+
+
+    //key_init(20); // 按键初始化，20ms一次中断
+    printf_USART_DEBUG("hello,WSY!\r\n");
     printf_USART_DEBUG("hello,WSY! Let`s start!\r\n");
     // Task_Disable();  // 定时器中断失能。即所有实时任务停止
 }
 //!------------------✨✨✨✨✨✨ 非时间片轮询任务调度函数 END 🌸🌸🌸🌸🌸🌸---------⬆️⬆️⬆️⬆️⬆️⬆️
+
+
+
 
 //!------------------🍅🍅🍅🍅🍅🍅 时间片轮询任务 START 🍒🍒🍒🍒🍒🍒---------⬇️⬇️⬇️⬇️⬇️⬇️
 /**
@@ -76,8 +85,8 @@ void UART_packet_TASKhandler(void)
     if (UART_DEBUG_data_packet_ready)
     {
         UART_DEBUG_data_packet_ready = false;
-        PacketTag_Analysis(Test_packet, NumOfMsg); // 此处NumOfMsg在串口处定义。
-        DebugPrint();                              // 输出接收的数据
+        PacketTag_Analysis(Test_packet, NumOfMsg);//此处NumOfMsg在串口处定义。
+        DebugPrint(); // 输出接收的数据
         printf_USART_DEBUG("\r\ntestv1:%d\r\n", test_value_1);
         printf_USART_DEBUG("\r\ntestv2:%f\r\n", test_value_2);
     }
@@ -91,53 +100,25 @@ void key_Processing(void)
     key_scanner();
     if (KEY_SHORT_PRESS == key_get_state(KEY_1)) // 按键1短按
     {
-        // printf_USART_DEBUG("KEY_1 pressed.");
+        //printf_USART_DEBUG("KEY_1 pressed.");
     }
     else if (KEY_LONG_PRESS == key_get_state(KEY_1)) // 按键1长按
     {
+
     }
     else if (KEY_SHORT_PRESS == key_get_state(KEY_2))
     {
+
     }
     else if (KEY_LONG_PRESS == key_get_state(KEY_2))
     {
-    }
-}
-/**
- * @brief 温度转换任务
- * 调用时执行一次温度转换
- */
-void Temp_Convert_Task(void)
-{
-    if (OneWire_Init() == 0) // 检查传感器是否存在
-    {
-        DS18B20_ConvertT(); // 启动温度转换
-    }
-}
-/**
- * @brief 温度读取任务
- * 调用时执行一次温度读取和打印
- */
-void Temp_Read_Task(void)
-{
-    if (OneWire_Init() == 0) // 检查传感器是否存在
-    {
-        float temp = DS18B20_ReadT(); // 读取温度
-        if (temp != 0.0f)             // 检查读取是否成功
-        {
-            printf_USART_DEBUG("DS18B20: %.2f\r\n", temp); // 串口打印温度
-        }
-        else
-        {
-            printf_USART_DEBUG("DS18B20: Read Error!\r\n"); // 读取失败提示
-        }
-    }
-    else
-    {
-        printf_USART_DEBUG("DS18B20: No Device!\r\n"); // 设备不存在提示
+
     }
 }
 //!------------------✨✨✨✨✨✨ 时间片轮询任务调度 END 🌸🌸🌸🌸🌸🌸---------⬆️⬆️⬆️⬆️⬆️⬆️
+
+
+
 
 //!------------------🍅🍅🍅🍅🍅🍅 硬实时任务 START 🍒🍒🍒🍒🍒🍒---------⬇️⬇️⬇️⬇️⬇️⬇️
 /**
@@ -149,5 +130,6 @@ void Temp_Read_Task(void)
  */
 void Hard_Real_Time_Processing(void)
 {
+
 }
 //!------------------✨✨✨✨✨✨ 硬实时任务 END 🌸🌸🌸🌸🌸🌸---------⬆️⬆️⬆️⬆️⬆️⬆️
