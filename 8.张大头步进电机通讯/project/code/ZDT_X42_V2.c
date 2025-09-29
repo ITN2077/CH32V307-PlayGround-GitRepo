@@ -44,7 +44,7 @@ void ZDT_X42_V2_Init(const ZDT_UartInterface_t *uart_if)
 }
 
 // 内部使用的串口发送函数
-static void uart_send_data(uint8_t *data, uint16_t length)
+static void UART_SEND(uint8_t *data, uint16_t length)
 {
   if (g_uart_if != (void *)0 && g_uart_if->send_data != (void *)0)
   {
@@ -68,7 +68,7 @@ void ZDT_X42_V2_Reset_CurPos_To_Zero(uint8_t addr)
   cmd[3] = 0x6B; // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 4);
+  UART_SEND(cmd, 4);
 }
 
 /**
@@ -87,7 +87,7 @@ void ZDT_X42_V2_Reset_Clog_Pro(uint8_t addr)
   cmd[3] = 0x6B; // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 4);
+  UART_SEND(cmd, 4);
 }
 
 /**
@@ -178,12 +178,12 @@ void ZDT_X42_V2_Read_Sys_Params(uint8_t addr, SysParams_t s)
   if (s >= S_Conf)
   {
     cmd[3] = 0x6B;
-    uart_send_data(cmd, 4);
+    UART_SEND(cmd, 4);
   }
   else
   {
     cmd[2] = 0x6B;
-    uart_send_data(cmd, 3);
+    UART_SEND(cmd, 3);
   }
 }
 
@@ -207,7 +207,7 @@ void ZDT_X42_V2_Modify_Ctrl_Mode(uint8_t addr, bool svF, uint8_t ctrl_mode)
   cmd[5] = 0x6B;      // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 6);
+  UART_SEND(cmd, 6);
 }
 
 /**
@@ -230,7 +230,7 @@ void ZDT_X42_V2_En_Control(uint8_t addr, bool state, uint8_t snF)
   cmd[5] = 0x6B;           // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 6);
+  UART_SEND(cmd, 6);
 }
 
 /**
@@ -258,7 +258,7 @@ void ZDT_X42_V2_Torque_Control(uint8_t addr, uint8_t sign, uint16_t t_ramp, uint
   cmd[8] = 0x6B;                   // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 9);
+  UART_SEND(cmd, 9);
 }
 
 /**
@@ -290,7 +290,7 @@ void ZDT_X42_V2_Velocity_Control(uint8_t addr, uint8_t dir, uint16_t v_ramp, flo
   cmd[8] = 0x6B;                   // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 9);
+  UART_SEND(cmd, 9);
 }
 
 /**
@@ -328,7 +328,7 @@ void ZDT_X42_V2_Bypass_Position_LV_Control(uint8_t addr, uint8_t dir, float velo
   cmd[11] = 0x6B;                // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 12);
+  UART_SEND(cmd, 12);
 }
 
 /**
@@ -372,7 +372,7 @@ void ZDT_X42_V2_Traj_Position_Control(uint8_t addr, uint8_t dir, uint16_t acc, u
   cmd[15] = 0x6B;                 // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 16);
+  UART_SEND(cmd, 16);
 }
 
 /**
@@ -393,7 +393,7 @@ void ZDT_X42_V2_Stop_Now(uint8_t addr, uint8_t snF)
   cmd[4] = 0x6B; // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 5);
+  UART_SEND(cmd, 5);
 }
 
 /**
@@ -412,7 +412,7 @@ void ZDT_X42_V2_Synchronous_motion(uint8_t addr)
   cmd[3] = 0x6B; // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 4);
+  UART_SEND(cmd, 4);
 }
 
 /**
@@ -433,7 +433,7 @@ void ZDT_X42_V2_Origin_Set_O(uint8_t addr, bool svF)
   cmd[4] = 0x6B; // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 5);
+  UART_SEND(cmd, 5);
 }
 
 /**
@@ -477,7 +477,7 @@ void ZDT_X42_V2_Origin_Modify_Params(uint8_t addr, bool svF, uint8_t o_mode, uin
   cmd[19] = 0x6B;                   // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 20);
+  UART_SEND(cmd, 20);
 }
 
 /**
@@ -499,7 +499,7 @@ void ZDT_X42_V2_Origin_Trigger_Return(uint8_t addr, uint8_t o_mode, bool snF)
   cmd[4] = 0x6B;   // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 5);
+  UART_SEND(cmd, 5);
 }
 
 /**
@@ -518,7 +518,7 @@ void ZDT_X42_V2_Origin_Interrupt(uint8_t addr)
   cmd[3] = 0x6B; // 校验字节
 
   // 发送命令
-  uart_send_data(cmd, 4);
+  UART_SEND(cmd, 4);
 }
 
 /**
